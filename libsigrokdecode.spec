@@ -1,3 +1,5 @@
+# TODO
+# - py2/py3 bindings?
 Summary:	Basic API for running protocol decoders
 Name:		libsigrokdecode
 Version:	0.1.0
@@ -9,7 +11,12 @@ Source0:	http://downloads.sourceforge.net/sigrok/%{name}-%{version}.tar.gz
 # Source0-md5:	9bc237972f6176ba9dcff057b4e85fd6
 BuildRequires:	doxygen
 BuildRequires:	glib2-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	pkgconfig
+BuildRequires:	python-devel
+BuildRequires:	python-modules
 BuildRequires:	python3-devel
+BuildRequires:	python3-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,8 +54,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
