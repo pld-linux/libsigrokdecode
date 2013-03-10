@@ -10,6 +10,7 @@ Source0:	http://downloads.sourceforge.net/sigrok/%{name}-%{version}.tar.gz
 BuildRequires:	doxygen
 BuildRequires:	glib2-devel
 BuildRequires:	python3-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 %{name} is a shared library written in C which provides the basic API
@@ -38,10 +39,8 @@ developing applications that use %{name}.
 # This builds documentation for the -doc package
 doxygen Doxyfile
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
