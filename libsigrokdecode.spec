@@ -11,12 +11,14 @@ Source0:	http://downloads.sourceforge.net/sigrok/%{name}-%{version}.tar.gz
 # Source0-md5:	9bc237972f6176ba9dcff057b4e85fd6
 BuildRequires:	doxygen
 BuildRequires:	glib2-devel
+BuildRequires:	graphviz
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	python-modules
 BuildRequires:	python3-devel
 BuildRequires:	python3-modules
+BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,6 +52,8 @@ doxygen Doxyfile
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libsigrokdecode.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
