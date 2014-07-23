@@ -1,5 +1,3 @@
-# TODO
-# - py2/py3 bindings?
 #
 # Conditional build:
 %bcond_without	static_libs	# stqatic library
@@ -7,23 +5,28 @@
 Summary:	Basic API for running protocol decoders
 Summary(pl.UTF-8):	Podstawowe API do uruchamiana dekoderów protokołów
 Name:		libsigrokdecode
-Version:	0.2.0
+Version:	0.3.0
 Release:	1
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://www.sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
-# Source0-md5:	e5216eaf751510b12b5cfd846b970d64
+# Source0-md5:	c2c134355a0c50404e692335ce5b4c6e
 URL:		http://www.sigrok.org/
+# for unit tests
+#BuildRequires:	check >= 0.9.4
 BuildRequires:	doxygen
-BuildRequires:	glib2-devel
+BuildRequires:	gcc >= 6:4.0
+BuildRequires:	glib2-devel >= 1:2.24.0
 BuildRequires:	graphviz
+# for protocol decoder tests
+#BuildRequires:	libsigrok-devel >= 0.3.0
 BuildRequires:	libstdc++-devel
-BuildRequires:	pkgconfig
-BuildRequires:	python-devel
-BuildRequires:	python-modules
-BuildRequires:	python3-devel
-BuildRequires:	python3-modules
+BuildRequires:	pkgconfig >= 1:0.22
+BuildRequires:	python3-devel >= 1:3.2
+BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
+Requires:	glib2 >= 1:2.24.0
+Requires:	python3-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,6 +44,8 @@ Summary:	Development files for libsigrokdecode
 Summary(pl.UTF-8):	Pliki programistyczne biblioteki libsigrokdecode
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	glib2-devel >= 1:2.24.0
+Requires:	python3-devel >= 1:3.2
 
 %description devel
 This package contains the header files for developing applications
@@ -90,14 +95,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README NEWS COPYING ChangeLog
+%doc ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libsigrokdecode.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libsigrokdecode.so.1
+%attr(755,root,root) %ghost %{_libdir}/libsigrokdecode.so.2
 %{_datadir}/libsigrokdecode
 
 %files devel
 %defattr(644,root,root,755)
-%doc README doxy/html-api/*
+%doc doxy/html-api/*
 %attr(755,root,root) %{_libdir}/libsigrokdecode.so
 %{_includedir}/libsigrokdecode
 %{_pkgconfigdir}/libsigrokdecode.pc
