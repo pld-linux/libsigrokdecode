@@ -6,11 +6,12 @@ Summary:	Basic API for running protocol decoders
 Summary(pl.UTF-8):	Podstawowe API do uruchamiana dekoderów protokołów
 Name:		libsigrokdecode
 Version:	0.3.0
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://www.sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
 # Source0-md5:	c2c134355a0c50404e692335ce5b4c6e
+Patch0:		%{name}-link.patch
 URL:		http://www.sigrok.org/
 # for unit tests
 #BuildRequires:	check >= 0.9.4
@@ -69,6 +70,7 @@ Statyczna biblioteka libsigrokdecode.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
