@@ -14,21 +14,19 @@ Source0:	http://www.sigrok.org/download/source/libsigrokdecode/%{name}-%{version
 URL:		http://www.sigrok.org/
 # for unit tests
 #BuildRequires:	check >= 0.9.4
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.0
-BuildRequires:	glib2-devel >= 1:2.24.0
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	graphviz
-# for protocol decoder tests
-#BuildRequires:	libsigrok-devel >= 0.3.0
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.22
 BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
-Requires:	glib2 >= 1:2.24.0
+Requires:	glib2 >= 1:2.28.0
 Requires:	python3-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,7 +45,7 @@ Summary:	Development files for libsigrokdecode
 Summary(pl.UTF-8):	Pliki programistyczne biblioteki libsigrokdecode
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.24.0
+Requires:	glib2-devel >= 1:2.28.0
 Requires:	python3-devel >= 1:3.2
 
 %description devel
@@ -75,7 +73,7 @@ Statyczna biblioteka libsigrokdecode.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
