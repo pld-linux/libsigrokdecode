@@ -5,20 +5,20 @@
 Summary:	Basic API for running protocol decoders
 Summary(pl.UTF-8):	Podstawowe API do uruchamiana dekoderów protokołów
 Name:		libsigrokdecode
-Version:	0.5.2
+Version:	0.5.3
 Release:	1
 License:	GPL v3+
 Group:		Libraries
-Source0:	http://www.sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
-# Source0-md5:	b9033bc7e68bc17fffffd4fdd793f5a1
-URL:		http://www.sigrok.org/
-# for unit tests
-#BuildRequires:	check >= 0.9.4
+Source0:	https://sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
+# Source0-md5:	7ba4ed4ef1f06ae96979751e096c2821
+URL:		https://sigrok.org/wiki/Libsigrokdecode
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
+# for unit tests
+#BuildRequires:	check >= 0.9.4
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 6:4.0
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.34.0
 BuildRequires:	graphviz
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2
@@ -26,8 +26,8 @@ BuildRequires:	pkgconfig >= 1:0.22
 BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-pythonprov
-Requires:	glib2 >= 1:2.28.0
-Requires:	python3-modules
+Requires:	glib2 >= 1:2.34.0
+Requires:	python3-modules >= 1:3.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +45,7 @@ Summary:	Development files for libsigrokdecode
 Summary(pl.UTF-8):	Pliki programistyczne biblioteki libsigrokdecode
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.28.0
+Requires:	glib2-devel >= 1:2.34.0
 Requires:	python3-devel >= 1:3.2
 
 %description devel
